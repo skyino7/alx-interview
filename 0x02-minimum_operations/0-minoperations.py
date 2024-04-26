@@ -14,12 +14,7 @@ def minOperations(n):
     if n == 1:
         return 0
 
-    arr = [float('inf')] * (n + 1)
-    arr[1] = 0
-
-    for i in range(2, n + 1):
-        for j in range(1, i // 2 + 1):
-            if i % j == 0 and arr[j] + i // j < arr[i]:
-                arr[i] = arr[j] + i // j
-
-    return arr[n] if arr[n] != float('inf') else 0
+    if n % 2 == 1:
+        return minOperations(n - 1) + 1
+    else:
+        return minOperations(n / 2) + 2
