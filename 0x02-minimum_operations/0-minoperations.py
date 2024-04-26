@@ -14,7 +14,14 @@ def minOperations(n):
     if n == 1:
         return 0
 
-    if n % 2 == 1:
-        return minOperations(n - 1) + 1
-    else:
-        return minOperations(n / 2) + 2
+    num_op = 0
+    min_op = 2
+
+    while n > 1:
+        if n % min_op == 0:
+            num_op += min_op
+            n /= min_op
+        else:
+            min_op += 1
+
+    return num_op
