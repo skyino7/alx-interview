@@ -15,7 +15,7 @@ def isSafe(board, row, col, n):
     for i in range(row):
         if board[i][col] == 'Q':
             return False
-    # Check if there is a queen in the same diagonal
+    # Check if there is a queen in the same column
     for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
         if board[i][j] == 'Q':
             return False
@@ -31,7 +31,12 @@ def solve(board, row, n):
     """
     if row == n:
         # Print the solution
-        solutions.append([[i, row.index('Q')] for i, row in enumerate(board)])
+        solution = []
+        for i in range(n):
+            for j in range(n):
+                if board[i][j] == 'Q':
+                    solution.append([i, j])
+        solutions.append(solution)
         return
     for col in range(n):
         if isSafe(board, row, col, n):
@@ -41,12 +46,13 @@ def solve(board, row, n):
 
 
 solutions = []
-n = int(sys.argv[1])
 if len(sys.argv) != 2:
     print("Usage: nqueens N")
     sys.exit(1)
 
-if not str(n).isdigit():
+try:
+    n = int(sys.argv[1])
+except ValueError:
     print("N must be a number")
     sys.exit(1)
 
