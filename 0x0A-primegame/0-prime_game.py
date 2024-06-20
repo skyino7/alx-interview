@@ -3,13 +3,15 @@
 Prime Game
 """
 
+
 def isWinner(x, nums):
     """
     Determines the winner of a prime game session with x rounds.
 
     Parameters:
         x (int): The number of rounds.
-        nums (List[int]): A list of numbers, each representing the range for a round.
+        nums (List[int]): A list of numbers, each representing
+        the range for a round.
 
     Returns:
         str or None: The winner of the most rounds, either "Maria" or "Ben",
@@ -19,7 +21,6 @@ def isWinner(x, nums):
         return None
 
     marias_wins, bens_wins = 0, 0
-
 
     n = max(nums)
     is_prime = [True] * (n + 1)
