@@ -3,7 +3,6 @@
 Prime Game
 """
 
-
 def isWinner(x, nums):
     """
     Determines the winner of a prime game session with x rounds.
@@ -31,7 +30,6 @@ def isWinner(x, nums):
             for j in range(i * i, n + 1, i):
                 is_prime[j] = False
 
-    # Filter the number of primes less than n in nums for each round
     for _, n in zip(range(x), nums):
         primes_count = sum(is_prime[0:n+1])
         bens_wins += primes_count % 2 == 0
